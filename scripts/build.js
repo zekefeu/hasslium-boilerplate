@@ -32,7 +32,6 @@ const outFolder = "build/out/";
 // Loop through the files
 for (const file in files) {
 
-	// Get 
 	const filename = files[file];
 
 	// Get the folder's path from the file name
@@ -43,6 +42,8 @@ for (const file in files) {
 		hasslium.process(fs.readFileSync("build/ts/" + filename).toString().split("\n"), { macros: startArgsArray, verbose: false }, (error, output) => {
 			if (error) {
 				console.error(error);
+
+				process.exit(1);
 			} else {
 				try {
 					// Ensures the folder exists
@@ -57,15 +58,19 @@ for (const file in files) {
 					// Write it to the output folder
 					fs.writeFileSync("build/out/" + filename, output.join("\n"));
 
-					console.log(chalk.green("✅ DONE:"), chalk.grey(filename));
+					console.log(chalk.green("✅ Done:"), chalk.grey(filename));
 				} catch (err) {
-					console.error(chalk.red("❌ ERROR:"), chalk.grey(filename));
+					console.error(chalk.red("❌ Error:"), chalk.grey(filename));
 					console.error(err);
+
+					process.exit(1);
 				}
 			}
 		});
 	} catch (err) {
 		console.error(err);
+
+		process.exit(1);
 	}
 }
 
