@@ -1,6 +1,10 @@
-import * as fs from "node:fs";
-import * as path from "node:path";
+import fs from "node:fs";
+import path from "node:path";
 import * as hasslium from "hasslium";
+import chalk from "chalk";
+
+// Add your files here
+const files = ["main.js"];
 
 // Macros
 // Get the arguments from the CLI
@@ -22,9 +26,6 @@ if (argsArray.length > 2) {
 		startArgsArray.push([arg.toUpperCase(), "1"]);
 	});
 }
-
-// Add your files here
-const files = ["main.js"];
 
 const outFolder = "build/out/";
 
@@ -56,9 +57,9 @@ for (const file in files) {
 					// Write it to the output folder
 					fs.writeFileSync("build/out/" + filename, output.join("\n"));
 
-					console.log("=== DONE:", filename);
+					console.log(chalk.green("✅ DONE:"), chalk.grey(filename));
 				} catch (err) {
-					console.error("=== ERROR:", filename);
+					console.error(chalk.red("❌ ERROR:"), chalk.grey(filename));
 					console.error(err);
 				}
 			}
@@ -68,4 +69,4 @@ for (const file in files) {
 	}
 }
 
-console.log("\n");
+console.log();
