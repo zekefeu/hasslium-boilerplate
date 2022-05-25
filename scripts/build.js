@@ -38,35 +38,40 @@ for (const file in files) {
 	const folderPath = outFolder + path.dirname(filename);
 
 	try {
-		// Process the file
-		hasslium.process(fs.readFileSync("build/ts/" + filename).toString().split("\n"), { macros: startArgsArray, verbose: false }, (error, output) => {
-			if (error) {
-				console.error(error);
-
-				process.exit(1);
-			} else {
-				try {
-					// Ensures the folder exists
-					if (!fs.existsSync(folderPath)) {
-						if (folderPath === outFolder + ".") {
-							fs.mkdirSync(outFolder);
-						} else {
-							fs.mkdirSync(folderPath);
-						}
-					}
-
-					// Write it to the output folder
-					fs.writeFileSync("build/out/" + filename, output.join("\n"));
-
-					console.log(chalk.green("✅ Done:"), chalk.grey(filename));
-				} catch (err) {
-					console.error(chalk.red("❌ Error:"), chalk.grey(filename));
-					console.error(err);
-
+		// Check if the file exists in the ts out folder
+		if (fs.existsSync("build/ts/" + filename)) {
+			// Process the file
+			hasslium.process(fs.readFileSync("build/ts/" + filename).toString().split("\n"), { macros: startArgsArray, verbose: false }, (error, output) => {
+				if (error) {
+					console.error(error);
+	
 					process.exit(1);
+				} else {
+					try {
+						// Ensures the folder exists
+						if (!fs.existsSync(folderPath)) {
+							if (folderPath === outFolder + ".") {
+								fs.mkdirSync(outFolder);
+							} else {
+								fs.mkdirSync(folderPath);
+							}
+						}
+	
+						// Write it to the output folder
+						fs.writeFileSync("build/out/" + filename, output.join("\n"));
+	
+						console.log(chalk.green("✅ Done:"), chalk.grey(filename));
+					} catch (err) {
+						console.error(chalk.red("❌ Error:"), chalk.grey(filename));
+						console.error(err);
+	
+						process.exit(1);
+					}
 				}
-			}
-		});
+			});
+		} else {
+			console.log("━━ Skipped:", chalk.grey(filename));
+		}
 	} catch (err) {
 		console.error(err);
 
