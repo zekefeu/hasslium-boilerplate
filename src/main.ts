@@ -3,9 +3,9 @@
 console.log("HELLO");
 
 //# ifdef DEV
-console.log("dev");
+console.log("Started in dev mode.");
 //# endif
 
 //# ifdef RELEASE
-console.log("release");
+console.log("Started in release mode.");
 //# endif
