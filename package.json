@@ -1,0 +1,25 @@
+{
+  "name": "hasslium-boilerplate",
+  "version": "0.0.1",
+  "description": "",
+  "main": "build/out/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node scripts/build.js",
+    "start": "npm run build dev && node build/out/main.js",
+    "start-release": "npm run build release && node build/out/main.js",
+    "tsc": "tsc"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "fuka-g",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^17.0.31",
+    "@typescript-eslint/eslint-plugin": "^5.25.0",
+    "@typescript-eslint/parser": "^5.25.0",
+    "eslint": "^8.16.0",
+    "hasslium": "^1.0.1",
+    "typescript": "^4.6.4"
+  }
+}

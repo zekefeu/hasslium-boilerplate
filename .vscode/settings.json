@@ -1,0 +1,29 @@
+{
+  "actionButtons": {
+    "defaultColor": "#ffffff",
+    "loadNpmCommands": false,
+    //"reloadButton": null,
+    "commands": [
+      {
+        "name": "💎 TSC",
+        "command": "npm run tsc",
+        "singleInstance": true
+      },
+      {
+        "name": "🟢 Start",
+        "command": "npm run start",
+        "singleInstance": true
+      },
+      {
+        "name": "🛑 Start Release",
+        "command": "npm run start-release",
+        "singleInstance": true
+      },
+      {
+        "name": "✅ Test",
+        "command": "npm run test",
+        "singleInstance": true
+      }
+    ]
+  }
+}
