@@ -4,7 +4,7 @@ import * as hasslium from "hasslium";
 import chalk from "chalk";
 
 // Add your files here
-const files = ["main.js"];
+const files = [ "main.js", "utils/logger.js", "utils/utils.js" ];
 
 // Macros
 // Get the arguments from the CLI

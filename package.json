@@ -11,7 +11,10 @@
     "tsc": "tsc"
   },
   "type": "module",
-  "keywords": ["hasslium", "boilerplate"],
+  "keywords": [
+    "hasslium",
+    "boilerplate"
+  ],
   "author": "fuka-g",
   "license": "ISC",
   "devDependencies": {
@@ -21,6 +24,10 @@
     "chalk": "^5.0.1",
     "eslint": "^8.16.0",
     "hasslium": "^1.0.2",
+    "pino-pretty": "^7.6.1",
     "typescript": "^4.6.4"
+  },
+  "dependencies": {
+    "pino": "^7.11.0"
   }
 }

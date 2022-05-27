@@ -1,11 +1,13 @@
 //# define HELLO Hello world !
 
-console.log("HELLO");
+import { logger } from "./utils/logger.js";
+
+logger.info("HELLO");
 
 //# ifdef DEV
-console.log("Started in dev mode.");
+logger.info("Started in dev mode.");
 //# endif
 
 //# ifdef RELEASE
-console.log("Started in release mode.");
+logger.info("Started in release mode.");
 //# endif
